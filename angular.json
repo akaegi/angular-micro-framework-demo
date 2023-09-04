@@ -3,5 +3,338 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "micro-host": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/micro-host",
+      "sourceRoot": "projects/micro-host/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "webpack.config.ts"
+            },
+            "outputPath": "dist/micro-host",
+            "index": "projects/micro-host/src/index.html",
+            "main": "projects/micro-host/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/micro-host/tsconfig.app.json",
+            "assets": [
+              "projects/micro-host/src/favicon.ico",
+              "projects/micro-host/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@angular",
+                "output": "node_modules/@angular"
+              },
+              {
+                "glob": "**/*",
+                "input": "dist",
+                "output": "dist"
+              }
+            ],
+            "styles": [
+              "projects/micro-host/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "micro-host:build:production",
+              "customWebpackConfig": {
+                "path": "webpack.config.prod.ts"
+              }
+            },
+            "development": {
+              "browserTarget": "micro-host:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "micro-host:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/micro-host/tsconfig.spec.json",
+            "assets": [
+              "projects/micro-host/src/favicon.ico",
+              "projects/micro-host/src/assets"
+            ],
+            "styles": [
+              "projects/micro-host/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "micro-plugin-1": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/micro-plugin-1",
+      "sourceRoot": "projects/micro-plugin-1/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "webpack.config.ts"
+            },
+            "outputPath": "dist/micro-plugin-1",
+            "index": "projects/micro-plugin-1/src/index.html",
+            "main": "projects/micro-plugin-1/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/micro-plugin-1/tsconfig.app.json",
+            "assets": [
+              "projects/micro-plugin-1/src/favicon.ico",
+              "projects/micro-plugin-1/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@angular",
+                "output": "node_modules/@angular"
+              }
+            ],
+            "styles": [
+              "projects/micro-plugin-1/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "micro-plugin-1:build:production",
+              "customWebpackConfig": {
+                "path": "webpack.config.prod.ts"
+              }
+            },
+            "development": {
+              "browserTarget": "micro-plugin-1:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "micro-plugin-1:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/micro-plugin-1/tsconfig.spec.json",
+            "assets": [
+              "projects/micro-plugin-1/src/favicon.ico",
+              "projects/micro-plugin-1/src/assets"
+            ],
+            "styles": [
+              "projects/micro-plugin-1/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "microplugin2": {
+      "projectType": "library",
+      "root": "projects/microplugin2",
+      "sourceRoot": "projects/microplugin2/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/microplugin2/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/microplugin2/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/microplugin2/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/microplugin2/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "micro-plugin-3": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/micro-plugin-3",
+      "sourceRoot": "projects/micro-plugin-3/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
+          "options": {
+            "outputPath": "dist/micro-plugin-3",
+            "index": "projects/micro-plugin-3/src/index.html",
+            "main": "projects/micro-plugin-3/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/micro-plugin-3/tsconfig.app.json",
+            "assets": [
+              "projects/micro-plugin-3/src/favicon.ico",
+              "projects/micro-plugin-3/src/assets"
+            ],
+            "styles": [
+              "projects/micro-plugin-3/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "micro-plugin-3:build:production"
+            },
+            "development": {
+              "browserTarget": "micro-plugin-3:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "micro-plugin-3:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/micro-plugin-3/tsconfig.spec.json",
+            "assets": [
+              "projects/micro-plugin-3/src/favicon.ico",
+              "projects/micro-plugin-3/src/assets"
+            ],
+            "styles": [
+              "projects/micro-plugin-3/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
   }
 }
